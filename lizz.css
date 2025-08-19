@@ -1,46 +1,109 @@
-body{
-    background-color: rgb(238, 227, 227);
-    display:flex;
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body background and fade-in animation */
+body {
+    min-height: 100vh;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    justify-content: flex-start;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    animation: fadeInBody 1.5s ease-in-out;
+    padding: 20px;
 }
-h1{
-    font-size: 3.5rem;
-    color:chocolate;
 
+/* Fade in body */
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
-#options{
+
+/* Title styling */
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffd700;
+    text-shadow: 2px 2px 8px #000;
+}
+
+/* Options buttons container */
+#options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
-#options button{
-    font-size: 7.5rem;
-    margin:0 10px;
-    max-width: 160px;
-    border-radius: 250px;
-    background-color: blue;
-    cursor:pointer;
-    transition: background-color 0.5s ease;
 
+/* Buttons styling */
+#options button {
+    font-size: 3rem;
+    padding: 20px 30px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
 }
-#options button:hover{
-    background-color: chartreuse;
+
+#options button:hover {
+    transform: scale(1.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    background: linear-gradient(45deg, #1fa2ff, #12d8fa);
 }
-#player #computer{
-    font-size: 2.5rem;
+
+/* Player and computer score boxes */
+#player, #computer, #results, #scores {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeInOut 1s ease-in-out;
 }
-#results{
-    font-size: 5rem;
-    margin:30px 0;
+
+/* Animate results with fade in/out */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px);}
+    50% { opacity: 1; transform: translateY(0);}
+    100% { opacity: 0; transform: translateY(-10px);}
 }
-.greentext, #playerscore{
-    color:green;
+
+/* Score spans for emphasis */
+#playerscore, #computerscore {
+    font-weight: bold;
+    color: #00ffcc;
 }
-.redtext,#computerscore{
-    color:red;
-}
-#scores{
-    font-size: 2rem;
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #options button {
+        font-size: 2.2rem;
+        padding: 15px 20px;
+    }
+
+    #player, #computer, #results, #scores {
+        font-size: 1.2rem;
+        width: 95%;
+    }
 }
